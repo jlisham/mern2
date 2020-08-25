@@ -1,0 +1,5 @@
+{
+  "mongoURI": "mongodb+srv://mernUser:ef9VxmlEfqj1reNP@merncluster.ahi2h.mongodb.net/mnFarmDirect?retryWrites=true&w=majority",
+  "jwtSecret": "thisissupersecret",
+  "HEREapiKey": "6zBvoiInwsV-sCr5ao65EOiulD8_JgvXXZxtra3saWQ"
+}
