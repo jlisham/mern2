@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
@@ -9,7 +9,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <ul>
       <li>
         <Link to="/dashboard">
-          <i className="fas fa-user" />
+          <span>
+            <i className="fas fa-user" />
+          </span>
           <span className="hide-sm">Dashboard</span>
         </Link>
       </li>

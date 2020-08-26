@@ -5,7 +5,7 @@ import Landing from "./components/webparts/Landing";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Dashboard from "./components/dashboard/Dashboard";
-import CreateProfile from "./components/profile-form/Create";
+import Manage from "./components/profile-form/Manage";
 import Alert from "./components/webparts/Alert";
 import PrivateRoute from "./components/routing/PrivateRoute";
 //Redux
@@ -36,11 +36,7 @@ const App = () => {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute
-                exact
-                path="/create-profile"
-                component={CreateProfile}
-              />
+              <PrivateRoute exact path="/manage-profile" component={Manage} />
             </Switch>
           </section>
         </Fragment>

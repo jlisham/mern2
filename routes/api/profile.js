@@ -97,17 +97,17 @@ router.put(
       company,
       website,
       location,
-      bio,
       status,
+      skills,
+      githubusername,
+      bio,
       experience,
       education,
-      githubusername,
-      skills,
       facebook,
-      youtube,
-      twitter,
       instagram,
       linkedin,
+      twitter,
+      youtube,
     } = req.body;
 
     const profileFields = { status };

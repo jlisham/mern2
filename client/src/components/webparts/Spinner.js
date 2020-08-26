@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 export default () => (
-  <Fragment>
+  <span>
     <i
       className="fas fa-spinner fa-6x active"
       alt="Loading..."
       style={{ display: "block", margin: "auto" }}
     />
-  </Fragment>
+  </span>
 );
