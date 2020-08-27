@@ -6,6 +6,8 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Dashboard from "./components/dashboard/Dashboard";
 import Manage from "./components/profile-form/Manage";
+import ManageExp from "./components/profile-form/ManageExp";
+// import ManageEd from "./components/profile-form/ManageEd";
 import Alert from "./components/webparts/Alert";
 import PrivateRoute from "./components/routing/PrivateRoute";
 //Redux
@@ -37,6 +39,16 @@ const App = () => {
               <Route exact path="/login" component={Login} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/manage-profile" component={Manage} />
+              <PrivateRoute
+                exact
+                path="/manage-experience"
+                component={ManageExp}
+              />
+              {/* <PrivateRoute
+                exact
+                path="/manage-education"
+                component={ManageEd}
+              /> */}
             </Switch>
           </section>
         </Fragment>

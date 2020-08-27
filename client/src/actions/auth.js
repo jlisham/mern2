@@ -54,13 +54,14 @@ export const login = (email, password) => async (dispatch) => {
   const body = JSON.stringify({ email, password });
   try {
     const res = await axios.post("/api/auth", body, config);
+    dispatch(setAlert("Welcome Back!", "success"));
     dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
     // console.log(errors);
     if (errors) {
-      setAlert("credentials are not valid", "danger");
+      dispatch(setAlert("credentials are not valid", "danger"));
     }
     dispatch({ type: LOGIN_FAIL });
   }

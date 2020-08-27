@@ -1,5 +1,5 @@
-import React, { Fragment, Link, useState } from "react";
-import { withRouter } from "react-router-dom";
+import React, { Fragment, useState } from "react";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getCurrentProfile, manageProfile } from "../../actions/profile";
