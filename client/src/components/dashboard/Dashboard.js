@@ -6,7 +6,6 @@ import { getCurrentProfile, delAcct } from "../../actions/profile";
 import Nav from "./Nav";
 import Experience from "./Experience";
 import Spinner from "../webparts/Spinner";
-import { PROFILE_ERROR } from "../../actions/types";
 
 const Dashboard = ({
   getCurrentProfile,
@@ -16,8 +15,8 @@ const Dashboard = ({
 }) => {
   useEffect(() => {
     getCurrentProfile();
-  }, []);
-  return loading && profile === null ? (
+  }, [getCurrentProfile]);
+  return profile === null ? (
     <Spinner />
   ) : (
     <Fragment>

@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { manageEd } from "../../actions/profile";
@@ -119,4 +119,4 @@ const ManageEd = ({ manageEd, history }) => {
 
 ManageEd.propTypes = { manageEd: PropTypes.func.isRequired };
 
-export default connect(null, { manageEd })(ManageEd);
+export default connect(null, { manageEd })(withRouter(ManageEd));

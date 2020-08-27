@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { manageExp } from "../../actions/profile";
@@ -119,4 +119,4 @@ const ManageExp = ({ manageExp, history }) => {
 
 ManageExp.propTypes = { manageExp: PropTypes.func.isRequired };
 
-export default connect(null, { manageExp })(ManageExp);
+export default connect(null, { manageExp })(withRouter(ManageExp));

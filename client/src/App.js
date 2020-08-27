@@ -6,6 +6,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Dashboard from "./components/dashboard/Dashboard";
 import Manage from "./components/profile-form/Manage";
+import Profiles from "./components/profile/Profiles";
 import ManageExp from "./components/profile-form/ManageExp";
 // import ManageEd from "./components/profile-form/ManageEd";
 import Alert from "./components/webparts/Alert";
@@ -37,6 +38,7 @@ const App = () => {
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/profiles" component={Profiles} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/manage-profile" component={Manage} />
               <PrivateRoute
