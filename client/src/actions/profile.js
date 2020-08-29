@@ -72,9 +72,9 @@ export const manageProfile = (formData, history, edit = false) => async (
     });
 
     dispatch(setAlert(edit ? "Profile Updated" : "Profile Created", "success"));
-    if (!edit) {
-      history.push("/dashboard");
-    }
+    // if (!edit) {
+    history.push("/dashboard");
+    // }
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
@@ -102,9 +102,9 @@ export const manageExp = (formData, history, edit = false) => async (
     dispatch(
       setAlert(edit ? "Experience Updated" : "Experience Created", "sprimary")
     );
-    if (!edit) {
-      history.push("/dashboard");
-    }
+    // if (!edit) {
+    history.push("/dashboard");
+    // }
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {

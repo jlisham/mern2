@@ -1,44 +1,47 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getCurrentProfile, manageProfile } from "../../actions/profile";
 
-const Manage = ({ manageProfile, history, profile: { profile, loading } }) => {
-  const [formData, setFormData] = useState(
-    !profile
-      ? {
-          company: "",
-          website: "",
-          location: "",
-          status: "",
-          skills: "",
-          githubusername: "",
-          bio: "",
-          twitter: "",
-          facebook: "",
-          linkedin: "",
-          youtube: "",
-          instagram: "",
-        }
-      : {
-          company: loading || !profile.company ? "" : profile.company,
-          website: loading || !profile.website ? "" : profile.website,
-          location: loading || !profile.location ? "" : profile.location,
-          status: loading || !profile.status ? "" : profile.status,
-          skills: loading || !profile.skills ? "" : profile.skills.join(","),
-          githubusername:
-            loading || !profile.githubusername ? "" : profile.githubusername,
-          bio: loading || !profile.bio ? "" : profile.bio,
-          facebook: loading || !profile.social ? "" : profile.social.facebook,
-          instagram: loading || !profile.social ? "" : profile.social.instagram,
-          linkedin: loading || !profile.social ? "" : profile.social.linkedin,
-          twitter: loading || !profile.social ? "" : profile.social.twitter,
-          youtube: loading || !profile.social ? "" : profile.social.youtube,
-        }
-  );
+const initialState = {
+  company: "",
+  website: "",
+  location: "",
+  status: "",
+  skills: "",
+  githubusername: "",
+  bio: "",
+  twitter: "",
+  facebook: "",
+  linkedin: "",
+  youtube: "",
+  instagram: "",
+};
 
-  const [displaySM, toggleSM] = useState(false);
+const Manage = ({
+  profile: { profile, loading },
+  manageProfile,
+  getCurrentProfile,
+  history,
+}) => {
+  const [formData, setFormData] = useState(initialState);
+
+  useEffect(() => {
+    if (!profile) getCurrentProfile();
+    if (!loading && profile) {
+      const profileData = { ...initialState };
+      for (const key in profile) {
+        if (key in profileData) profileData[key] = profile[key];
+      }
+      for (const key in profile.social) {
+        if (key in profileData) profileData[key] = profile.social[key];
+      }
+      if (Array.isArray(profileData.skills))
+        profileData.skills = profileData.skills.join(", ");
+      setFormData(profileData);
+    }
+  }, [loading, getCurrentProfile, profile]);
 
   const {
     company,
@@ -48,12 +51,14 @@ const Manage = ({ manageProfile, history, profile: { profile, loading } }) => {
     skills,
     githubusername,
     bio,
-    facebook,
-    instagram,
-    linkedin,
     twitter,
+    facebook,
+    linkedin,
     youtube,
+    instagram,
   } = formData;
+
+  const [displaySM, toggleSM] = useState(false);
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });

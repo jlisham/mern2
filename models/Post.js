@@ -10,6 +10,7 @@ const PostSchema = new mongoose.Schema(
     name: { type: String },
     avatar: { type: String },
     likes: [{ user: { type: mongoose.Schema.Types.ObjectId, ref: "user" } }],
+    dislikes: [{ user: { type: mongoose.Schema.Types.ObjectId, ref: "user" } }],
     comments: [
       {
         user: { type: mongoose.Schema.Types.ObjectId, ref: "user" },

@@ -6,13 +6,13 @@ import { logout } from "../../actions/auth";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
-    <ul>
+    <Fragment>
       <li>
-        <Link to="/profiles">
+        <Link to="/posts">
           <span>
-            <i className="fas fa-users" />
+            <i className="fas fa-comments" />
           </span>
-          <span className="hide-sm">Developers</span>
+          <span className="hide-sm">Posts</span>
         </Link>
       </li>
       <li>
@@ -29,25 +29,17 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <span className="hide-sm">Logout</span>
         </a>
       </li>
-    </ul>
+    </Fragment>
   );
   const guestLinks = (
-    <ul>
-      <li>
-        <Link to="/profiles">
-          <span>
-            <i className="fas fa-users" />
-          </span>
-          <span className="hide-sm">Developers</span>
-        </Link>
-      </li>
+    <Fragment>
       <li>
         <Link to="/register">Register</Link>
       </li>
       <li>
         <Link to="/login">Login</Link>
       </li>
-    </ul>
+    </Fragment>
   );
   return (
     <nav className="navbar bg-dark">
@@ -57,7 +49,17 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         </Link>
       </h1>
       {!loading && (
-        <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+        <ul>
+          <li>
+            <Link to="/profiles">
+              <span>
+                <i className="fas fa-users" />
+              </span>
+              <span className="hide-sm">Developers</span>
+            </Link>
+          </li>
+          {isAuthenticated ? authLinks : guestLinks}
+        </ul>
       )}
     </nav>
   );

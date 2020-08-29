@@ -110,6 +110,31 @@ router.put("/like/:id", auth, async (req, res) => {
   }
 });
 
+//@route  Put api/post/dislike/:id
+//@desc   dislike a post
+//@access Private
+router.put("/dislike/:id", auth, async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    return res.status(400).send("Not a valid Post.");
+  }
+  try {
+    const post = await Post.findById(req.params.id);
+    if (post) {
+      const result = post.dislikes.filter(
+        (like) => like.user.toString() === req.user.id
+      );
+      result.length > 0
+        ? post.dislikes.splice({ user: req.user.id })
+        : post.dislikes.push({ user: req.user.id });
+      await post.save();
+    }
+    res.json(post.dislikes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json("server error: #p10965");
+  }
+});
+
 //@route  Put api/post/comment/:postID
 //@desc   create a post comment
 //@access Private
